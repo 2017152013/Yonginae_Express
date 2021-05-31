@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
+var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var fs = require('fs');
 
@@ -20,8 +21,10 @@ app.set('view engine', 'ejs');
 var server = app.listen(3000, () => console.log("Express server has started "));
 
 app.use(express.static('public'));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(cookieParser());
 app.use(session({
     secret:'@#@$MYSIGN#@$#$',
     resave: false,

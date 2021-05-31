@@ -20,10 +20,14 @@ const ReviewSchema = new mongoose.Schema({
     content:{
         type:String
     },
+    filename:{
+        type:String,
+    },
     yongi_type:{
         type:String,
         required:true
-    },
+    }
+    ,
     yongi_volume:{
         type:String,
         required:true

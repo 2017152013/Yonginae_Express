@@ -16,8 +16,8 @@ function placeList(data){
     const placelist = document.getElementById("placelist");
     for(let i = 0; i < data.length; i ++){
         let place = data[i];
-        placelist.innerHTML += "<li class = 'placelist_result' id =" +  place.id + "><ul><li><strong>" + place.place_name + "</strong></li>" +
-        "<li>주소:" + place.address_name + "</li>" + "</ul></li>";
+        placelist.innerHTML += "<div class = 'placelist_result' id =" +  place.id + "><li><ul><li><strong>" + place.place_name + "</strong></li>" +
+        "<li>주소:" + place.address_name + "</li>" + "</ul></li></div>";
     }
 
     // eventlistner 나중에 붙이기
@@ -30,23 +30,27 @@ function placesSearchCB(data, status) {
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
         placeList(data);
+        return false;
 
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 
         alert('검색 결과가 존재하지 않습니다.');
-        return;
+        return false;
 
     } else if (status === kakao.maps.services.Status.ERROR) {
 
         alert('검색 결과 중 오류가 발생했습니다.');
-        return;
+        return false;
 
     }
 }
 
 document.getElementById("keyword_search").addEventListener("click", searchPlaces);
 
+const results = document.getElementsByClassName("placelist_result");
+console.log("results" + results);
 
+/*
 document.getElementById("create_review").addEventListener("click", () => {
     const title = document.getElementById("title").value;
     const content = document.getElementById("content").value;
@@ -128,3 +132,4 @@ document.getElementById("create_review").addEventListener("click", () => {
         }
     })
 });
+*/

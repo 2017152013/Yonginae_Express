@@ -1,6 +1,19 @@
 var express = require('express');
 var router = express.Router();
 const Review = require('../models/Review');
+const multer = require('multer');
+
+// 업로드 파일 위치 지정
+//var upload = multer({dest:'uploads/'});
+const storage = multer.diskStorage({
+    destination:(req, file, callback) => {
+        callback(null, "uploads/");
+    },
+    filename:(req, file, callback) => {
+        callback(null, file.originalname);
+    }
+});
+const uploader = multer({storage:storage});
 
 
 router.get('/', function(req, res){
@@ -61,17 +74,66 @@ router.get('/create', (req, res) => {
     return;
 })
 
-router.post('/create', (req, res) => {
+router.post('/create', uploader.single('file'), (req, res) => {
+    let file = req.file;
+  
     const title = req.body.title;
     const content = req.body.content;
-    const yongi_type = req.body.yongi_type;
-    const yongi_volume = req.body.yongi_volume;
+    let filename;
+    if(file == undefined){
+        filename = "yonginae_default.JPG";
+    }else{
+        filename = file.filename;
+    }
+    let yongi_type = req.body.yongi_type;
+    let yongi_volume = req.body.yongi_volume;
     const yongi_rating = req.body.yongi_rating;
     const writer = req.session.user;
+
+    // 값 변경
+    if(yongi_type == "square"){
+        yongi_type = "사각 용기";
+    }else if(yongi_type == "cyliner"){
+        yongi_type = "원형 용기";
+    }else if(yongi_type == "fryingpan"){
+        yongi_type = "프라이팬";
+    }else if(yongi_type == "pot"){
+        yongi_type = "냄비";
+    }else if(yongi_type == "tumbler"){
+        yongi_type = "텀블러";
+    }else{
+        yongi_type = "기타";
+    }
+    
+    // 값 변경
+    if(yongi_volume == "500"){
+        yongi_volume = "500ml 이하";
+    }else if(yongi_volume == "1000"){
+        yongi_volume = "1l 이하";
+    }else if(yongi_volume == "1500"){
+        yongi_volume = "1.5l 이하";
+    }else if(yongi_volume == "2000"){
+        yongi_volume = "2l 이하";
+    }else if(yongi_volume == "2500"){
+        yongi_volume = "2.5l 이하";
+    }else if(yongi_volume == "3000"){
+        yongi_volume = "3l 이하";
+    }else if(yongi_volume == "3500"){
+        yongi_volume = "3.5l 이하";
+    }else if(yongi_volume == "4000"){
+        yongi_volume = "4l 이하";
+    }else if(yongi_volume == "4500"){
+        yongi_volume = "4.5l 이하";
+    }else if(yongi_volume == "5000"){
+        yongi_volume = "5l 이하";
+    }else{
+        yongi_volume = "5l 초과";
+    }
 
     let newReview = new Review();
     newReview.title = title;
     newReview.content = content;
+    newReview.filename = filename;
     newReview.yongi_type = yongi_type;
     newReview.yongi_volume = yongi_volume;
     newReview.yongi_rating = yongi_rating;
@@ -84,11 +146,9 @@ router.post('/create', (req, res) => {
             console.log(err);
         }
         else{
-            result.success = 1;
-            res.json(result);
+            res.redirect('/review');
         }
     });
-
 })
 
 module.exports = router;
