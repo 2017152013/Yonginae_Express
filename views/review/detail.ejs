@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('header') %>
+</head>
+<body>
+    <%- include('nav') %>
+    <h1>리뷰 상세</h1>
+    <h2>제목: <%= review.title %></h2>
+    <p>내용: <%= review.content %></p>
+    <p>용기 종류: <%= review.yongi_type %></p>
+    <p>용기 용량: <%= review.yongi_volume %></p>
+    <p>용기 적합도: <%= review.yongi_rating %></p>
+    <p>작성자: <%= review.writer %></p>
+    <p>작성일: <%= review.date %></p>
+</body>
+</html>

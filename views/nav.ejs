@@ -1,0 +1,37 @@
+<head>
+    <h1><a href = "/">용기내</a></h1>
+    <% if (is_logined) {%>
+        <h3>용기내 커뮤니티에 오신 것을 환영합니다! :) 
+            <%= user %>님!
+            <a href="/account/logout">로그아웃</a>
+        </h3>
+    <%} else{%>
+        <h3>용기내 커뮤니티에 오신 것을 환영합니다! :)</h3>
+    <%}%>
+</head>
+<nav>
+    <div>
+        <div>
+            <a href = "/place">주변식당 찾기</a>
+        </div>
+        <div>
+            <a href = "/review">리뷰 모아보기</a>
+        </div>
+        <div>
+            <a href = "">챌린지기록 게시판</a>
+        </div>
+        <div>
+            <a href = "">환경정보 모아보기</a>
+        </div>
+        <% if (is_logined) {%>
+            <div>
+                <a  href = "">마이페이지</a>
+            </div>        
+        <%} else{%>
+            <div>
+                <a  href = "/account/login">로그인</a>
+            </div>
+        <%}%>
+        
+    </div>
+</nav>

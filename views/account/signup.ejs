@@ -1,0 +1,102 @@
+signup
+<p>
+    <label for="id">아이디</label>
+    <input type="text" id="id" name="id">
+    <button id="idcheck">중복확인</button>
+</p>
+<p>
+    <label for="password1">비밀번호</label>
+    <input type="password" id="password1" name="password1">
+</p>
+<p>
+    <label for="password2">비밀번호 재입력</label>
+    <input type="password" id="password2" name="password2">
+</p>
+<button id="signup">회원가입</button>
+
+<script>
+    let check = 0;
+    let duplicate = 0;
+
+    // 중복확인
+    document.getElementById("idcheck").addEventListener("click", function () {
+        check = 1;
+        container = {}
+        container.id = document.getElementById("id").value;
+        if (container.id == "") {
+            window.alert("아이디를 입력해 주세요");
+            window.location.href = "/account/signup";
+            return;
+        }
+
+        fetch('/account/idcheck', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(container)
+        }).then((data) => {
+            return data.json();
+        }).then((data) => {
+            duplicate = data.duplicate;
+            var message = data.message;
+            if (duplicate) {
+                window.alert(message);
+                window.location.href = "/account/signup";
+            } else {
+                window.alert(message);
+            }
+        });
+    })
+
+    // form validation
+    function form_validation() {
+        id = document.getElementById("id").value;
+        pw1 = document.getElementById("password1").value;
+        pw2 = document.getElementById("password2").value;
+        if (!id || !pw1 || !pw2) {
+            return false;
+        }
+        return true;
+    }
+
+    // 회원가입
+    document.getElementById("signup").addEventListener("click", () => {
+        let validation = form_validation();
+        if (validation == false) {
+            window.alert("모든 항목을 작성해 주세요");
+        } else {
+            // 중복 체크 했는지?
+            if (check == 0) {
+                window.alert("아이디 중복체크를 해주세요");
+            } else {
+                id = document.getElementById("id").value;
+                pw1 = document.getElementById("password1").value;
+                pw2 = document.getElementById("password2").value;
+
+                if (pw1 != pw2) {
+                    window.alert("비밀번호가 일치하지 않습니다.");
+                    window.location.href="http://localhost:3000/account/signup"
+                } else {
+                    const container = {};
+                    container.id = id;
+                    container.password = pw1;
+
+                    fetch('/account/signup', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(container)
+                    }).then((data) => {
+                        return data.json();
+                    }).then((data) => {
+                        const message = data.message;
+                        window.alert(message);
+                        window.location.href = "http://localhost:3000/"
+                    });
+                }
+            }
+        }
+    })
+</script>

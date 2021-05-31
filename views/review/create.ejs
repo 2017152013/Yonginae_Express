@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('header') %>
+</head>
+<body>
+    <%- include('nav') %>
+    <h1>리뷰 작성</h1>
+    <p>가게 찾기<input type="text" name="keyword" id="keyword"><button id="keyword_search">검색</button></p>
+    <div>
+        검색 결과
+        <ol id="placelist"></ol>
+    </div>
+    <p>리뷰 제목 <input type="text" name="title" id="title"></p>
+    <p>리뷰 내용<textarea name="content" id="content" cols="30" rows="10"></textarea></p>
+    <p>용기 종류
+        <select name="yongi_type" id="yongi_type">
+            <option value="square">사각 용기</option>
+            <option value="cylinder">원형 용기</option>
+            <option value="fryingpan">프라이팬</option>
+            <option value="pot">냄비</option>
+            <option value="tumbler">텀블러</option>
+            <option value="etc">기타</option>
+        </select>
+    </p>
+    <p>용기 용량
+        <select name="yongi_volume" id="yongi_volume">
+            <option value="500">500ml 이하</option>
+            <option value="1000">1l 이하</option>
+            <option value="1500">1.5l 이하</option>
+            <option value="2000">2l 이하</option>
+            <option value="2500">2.5l 이하</option>
+            <option value="3000">3l 이하</option>
+            <option value="3500">3.5l 이하</option>
+            <option value="4000">4l 이하</option>
+            <option value="4500">4.5l 이하</option>
+            <option value="5000">5l 이하</option>
+            <option value="max">5l 초과</option>
+        </select>
+    </p>
+    <p>
+        용기 점수
+        <input type="radio" name="yongi_rating" id="yongi_rating_1" value="1">1
+        <input type="radio" name="yongi_rating" id="yongi_rating_2" value="2">2
+        <input type="radio" name="yongi_rating" id="yongi_rating_3" value="3">3
+        <input type="radio" name="yongi_rating" id="yongi_rating_4" value="4">4
+        <input type="radio" name="yongi_rating" id="yongi_rating_5" value="5">5
+    </p>
+    <button id="create_review">리뷰등록</button>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=312f9c7ea0102d2e9f3bf43432d99728&libraries=services"></script>
+    <script src="/js/review.js"></script>
+</body>
+</html>
