@@ -3,6 +3,7 @@
 
 <head>
     <%- include('header') %>
+    <link rel="stylesheet" href="/css/review.css">
 </head>
 
 <body>
@@ -14,6 +15,8 @@
         <ol id="placelist"></ol>
     </div>
     <form action="/review/create" method="POST" enctype="multipart/form-data">
+        <p><input type="hidden" name="place_name" id="place_name"></p>
+        <p><input type="hidden" name="place_id" id="place_id"></p>
         <p>리뷰 제목 <input type="text" name="title" id="title"></p>
         <p>사진<input type="file" name="file" id="file"></p>
         <p>리뷰 내용<textarea name="content" id="content" cols="30" rows="10"></textarea></p>

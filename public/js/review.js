@@ -16,11 +16,24 @@ function placeList(data){
     const placelist = document.getElementById("placelist");
     for(let i = 0; i < data.length; i ++){
         let place = data[i];
-        placelist.innerHTML += "<div class = 'placelist_result' id =" +  place.id + "><li><ul><li><strong>" + place.place_name + "</strong></li>" +
-        "<li>주소:" + place.address_name + "</li>" + "</ul></li></div>";
+        placelist.innerHTML += "<li><div class = 'placelist_result' id =" +  place.id + ">" + place.place_name +
+        "주소:" + place.address_name + "</div></li>";
     }
 
     // eventlistner 나중에 붙이기
+    const results = document.getElementsByClassName("placelist_result");
+    for(let i = 0; i < results.length; i ++){
+        results[i].addEventListener("click", function(event){
+            event.stopPropagation();
+            const place_id = event.target.id;
+            // place_id에 선택된 가게 id 등록
+            document.getElementById("place_id").value = place_id;
+            // keyword에 선택된 가게 이름 등록
+            document.getElementById("keyword").value = data[i].place_name;
+            // place_name에 선택된 가게 이름 등록
+            document.getElementById("place_name").value = data[i].place_name;
+        })
+    }
 }
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수
@@ -46,90 +59,3 @@ function placesSearchCB(data, status) {
 }
 
 document.getElementById("keyword_search").addEventListener("click", searchPlaces);
-
-const results = document.getElementsByClassName("placelist_result");
-console.log("results" + results);
-
-/*
-document.getElementById("create_review").addEventListener("click", () => {
-    const title = document.getElementById("title").value;
-    const content = document.getElementById("content").value;
-    let yongi_type = document.getElementById("yongi_type").value;
-    let yongi_volume = document.getElementById("yongi_volume").value;
-    
-    // 값 변경
-    if(yongi_type == "square"){
-        yongi_type = "사각 용기";
-    }else if(yongi_type == "cyliner"){
-        yongi_type = "원형 용기";
-    }else if(yongi_type == "fryingpan"){
-        yongi_type = "프라이팬";
-    }else if(yongi_type == "pot"){
-        yongi_type = "냄비";
-    }else if(yongi_type == "tumbler"){
-        yongi_type = "텀블러";
-    }else{
-        yongi_type = "기타";
-    }
-    
-    // 값 변경
-    if(yongi_volume == "500"){
-        yongi_volume = "500ml 이하";
-    }else if(yongi_volume == "1000"){
-        yongi_volume = "1l 이하";
-    }else if(yongi_volume == "1500"){
-        yongi_volume = "1.5l 이하";
-    }else if(yongi_volume == "2000"){
-        yongi_volume = "2l 이하";
-    }else if(yongi_volume == "2500"){
-        yongi_volume = "2.5l 이하";
-    }else if(yongi_volume == "3000"){
-        yongi_volume = "3l 이하";
-    }else if(yongi_volume == "3500"){
-        yongi_volume = "3.5l 이하";
-    }else if(yongi_volume == "4000"){
-        yongi_volume = "4l 이하";
-    }else if(yongi_volume == "4500"){
-        yongi_volume = "4.5l 이하";
-    }else if(yongi_volume == "5000"){
-        yongi_volume = "5l 이하";
-    }else{
-        yongi_volume = "5l 초과";
-    }
-
-    let yongi_rating;
-    for(let i = 1; i <= 5; i ++){
-        let id = "yongi_rating_" + i;
-        let check = document.getElementById(id).checked;
-        if(check){
-            yongi_rating = document.getElementById(id).value;
-            break;
-        }
-    }
-    
-    let container = {};
-    container.title = title;
-    container.content = content;
-    container.yongi_type = yongi_type;
-    container.yongi_volume = yongi_volume;
-    container.yongi_rating = yongi_rating;
-
-    fetch('/review/create', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(container)
-    }).then((data) => {
-        return data.json();
-    }).then((data) => {
-        const success = data.success;
-        if(success){
-            window.location.href = "/review";
-            return;
-        }else{
-            window.alert("ERROR");
-        }
-    })
-});
-*/

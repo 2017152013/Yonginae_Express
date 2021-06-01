@@ -23,6 +23,12 @@ const ReviewSchema = new mongoose.Schema({
     filename:{
         type:String,
     },
+    place_name:{
+        type:String,
+    },
+    place_id:{
+        type:String,
+    },
     yongi_type:{
         type:String,
         required:true

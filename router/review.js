@@ -85,6 +85,8 @@ router.post('/create', uploader.single('file'), (req, res) => {
     }else{
         filename = file.filename;
     }
+    const place_name = req.body.place_name;
+    const place_id = req.body.place_id;
     let yongi_type = req.body.yongi_type;
     let yongi_volume = req.body.yongi_volume;
     const yongi_rating = req.body.yongi_rating;
@@ -134,6 +136,8 @@ router.post('/create', uploader.single('file'), (req, res) => {
     newReview.title = title;
     newReview.content = content;
     newReview.filename = filename;
+    newReview.place_name = place_name;
+    newReview.place_id = place_id;
     newReview.yongi_type = yongi_type;
     newReview.yongi_volume = yongi_volume;
     newReview.yongi_rating = yongi_rating;
