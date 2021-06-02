@@ -1,4 +1,17 @@
-.placelist_result{
-    background-color: antiquewhite;
-    cursor: pointer;
-}
+main        { grid-row: 3/4; grid-column: 2/3;}
+
+main        {font-family: 'Do Hyeon', sans-serif;}
+
+.reviewBtn   { display: block; border-width: medium; border-style: solid; background-color: palevioletred;
+                width: 100px; height:30px; text-align: center; border-color:palevioletred;}
+
+.reviewBtn a    {color:honeydew}
+
+.reviewContent { display: flex; flex-flow: row; flex-wrap: wrap; align-items: center;}
+
+.reviewContent div { display: block; width: 300px; height: 400px; 
+                    border-width: thin; border-style: solid; border-color: plum;
+                     margin: 5px; }
+
+.reviewContent div img {display: block; width: 250px; height: 250px; margin: auto;}
+ 

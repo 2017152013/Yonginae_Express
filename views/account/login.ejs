@@ -1,37 +1,46 @@
-<h1>로그인</h1>
-<p>
-    <label for="id">아이디</label>
-    <input type="text" id="id" name="id">
-</p>
-<p>
-    <label for="password">비밀번호</label>
-    <input type="password" id="password" name="password">
-</p>
-<button id="login">로그인</button>
-
-<a href="/account/signup">회원가입 페이지로 이동</a>
-
-
-<script>
-    document.getElementById("login").addEventListener("click", () => {
-        const id = document.getElementById("id").value;
-        const password = document.getElementById("password").value;
-        const container = {"id":id, "password":password};
-        fetch('/account/login', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(container)
-        }).then((data) => {
-            return data.json();
-        }).then((data) => {
-            if(data.message){
-                window.alert(data.message);
-            }
-            else{
-                window.location.href = "http://localhost:3000/"
-            }
-        });
-    })
-</script>
+<head>
+    <link rel="stylesheet" href="/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+<link href = "https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>로그인</h1>
+    <p>
+        <label for="id">아이디</label>
+        <input type="text" id="id" name="id" placeholder="ID">
+    </p>
+    <p>
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" name="password" placeholder="PW">
+    </p>
+    <footer>
+        <button id="login">로그인</button>
+        <a href="/account/signup">&gt&gt회원가입&lt&lt</a>
+    </footer>
+   
+    
+    
+    <script>
+        document.getElementById("login").addEventListener("click", () => {
+            const id = document.getElementById("id").value;
+            const password = document.getElementById("password").value;
+            const container = {"id":id, "password":password};
+            fetch('/account/login', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(container)
+            }).then((data) => {
+                return data.json();
+            }).then((data) => {
+                if(data.message){
+                    window.alert(data.message);
+                }
+                else{
+                    window.location.href = "http://localhost:3000/"
+                }
+            });
+        })
+    </script>
+    </body>

@@ -1,0 +1,12 @@
+h1              { font-family: 'Do Hyeon', sans-serif;
+    font-size: 60px; text-align: center; font-weight: bold; margin-bottom: 0;}
+
+
+body            { font-family: 'Do Hyeon', sans-serif; font-size: 30px;
+                 display: flex; justify-content: center; align-items: center; flex-direction: column;}
+
+p input         { width: 150px; height: 30px}
+
+
+button      {font-family: 'Do Hyeon'; font-size: 20px;}
+a           { margin-left: 10px;}
