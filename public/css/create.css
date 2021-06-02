@@ -1,0 +1,15 @@
+.placelist_result{
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+content { grid-row: 3/4; grid-column: 1/4; display:inline;}
+main h1      { grid-column: 1/4; text-align: center; }
+
+aside   {display: block; grid-column: 1/2; margin-top: 250px;}
+main    {display: block; grid-column: 2/3; margin-left: 50px;}
+
+
+aside   {font-family: 'Do Hyeon', sans-serif; font-size:20px;}
+aside button {font-family: 'Do Hyeon'; font-size: 15px;}
+
+main    {font-family: 'Do Hyeon', sans-serif; font-size: 40px;;}

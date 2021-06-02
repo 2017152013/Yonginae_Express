@@ -1,14 +1,14 @@
-<head>
+<header>
     <h1><a href = "/">용기내</a></h1>
     <% if (is_logined) {%>
-        <h3>용기내 커뮤니티에 오신 것을 환영합니다! :) 
+        <h3>
             <%= user %>님!
             <a href="/account/logout">로그아웃</a>
         </h3>
     <%} else{%>
         <h3>용기내 커뮤니티에 오신 것을 환영합니다! :)</h3>
     <%}%>
-</head>
+</header>
 <nav>
     <div>
         <div>
@@ -25,7 +25,7 @@
         </div>
         <% if (is_logined) {%>
             <div>
-                <a  href = "">마이페이지</a>
+                <a  href = "/mypage">마이페이지</a>
             </div>        
         <%} else{%>
             <div>

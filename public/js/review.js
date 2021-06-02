@@ -14,6 +14,8 @@ function searchPlaces(){
 function placeList(data){
     console.log(data);
     const placelist = document.getElementById("placelist");
+    //기존 결과 목록 제거
+    removeAllChildNods(placelist);
     for(let i = 0; i < data.length; i ++){
         let place = data[i];
         placelist.innerHTML += "<li><div class = 'placelist_result' id =" +  place.id + ">" + place.place_name +
@@ -57,5 +59,9 @@ function placesSearchCB(data, status) {
 
     }
 }
-
+function removeAllChildNods(el) {   
+    while (el.hasChildNodes()) {
+        el.removeChild (el.lastChild);
+    }
+}
 document.getElementById("keyword_search").addEventListener("click", searchPlaces);

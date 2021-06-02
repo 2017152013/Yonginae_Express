@@ -1,0 +1,9 @@
+main    { grid-row: 3/4; grid-column: 2/3}
+
+
+main    {font-family: 'Black Han Sans', sans-serif; font-size: 40px;}
+main em { font-size: 60px;}
+
+button  { background-color:rgb(226, 200, 241);  font-family: 'Black Han Sans', sans-serif;
+    font-size: 20px; border-radius: 15px; margin-right: 20px; padding: 5px;}
+form    {display: inline;}
