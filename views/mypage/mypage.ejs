@@ -8,10 +8,10 @@
     <%- include('nav') %>
     <main>
         <ul>
-            <em>용기내</em> 님
+            <em><%= user %></em> 님
         </ul>
         <ul>
-            ID: example
+            ID: <%= user %>
         </ul>
         <ul>
             등급: 골드
@@ -19,12 +19,12 @@
         <ul>
             지금까지 n번 참여하셨습니다!
         </ul>
-        <form onsubmit>
-            <button type="submit" class = "review">작성 리뷰 확인</button> 
-        </form>
-        <form onsubmit>
-            <button type="submit" class = "review">챌린지 기록 확인</button> 
-        </form>
+        <a href="/mypage/myreview">
+            <button class = "review">작성 리뷰 확인</button>
+        </a>
+        <a>
+            <button class = "review">챌린지 기록 확인</button> 
+        </a>
     </main>
   </body>
 </html>

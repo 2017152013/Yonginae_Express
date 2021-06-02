@@ -38,3 +38,6 @@ var router = require('./router/main')(app, fs);
 app.use("/place", require('./router/place.js'));
 app.use("/account", require('./router/account.js'));
 app.use("/review", require('./router/review.js'));
+app.use("/challenge", require('./router/challenge.js'));
+app.use("/mypage", require('./router/mypage.js'));
+app.use("/envinfo", require('./router/envinfo.js'));

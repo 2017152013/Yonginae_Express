@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('header') %>
     <link rel="stylesheet" href="/css/detail.css">
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
-    <link href = "https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <%- include('nav') %>
     <main>
         <h1>리뷰 상세</h1>
+        <% if (user == review.writer){%>
+            <a href="/review/edit/<%= review._id %>">수정하기</a>
+            <a href="">삭제하기</a>
+        <%}%>
         <div>
             <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review_img" width="400" height="400">
             <content>
-                <h2>제목: <%= review.title %></h2>
-                <p>포장한 곳:<%= review.place_name %></p>
-                <p>내용: <%= review.content %></p>
-                <p>용기 종류: <%= review.yongi_type %></p>
-                <p>용기 용량: <%= review.yongi_volume %></p>
-                <p>용기 적합도: <%= review.yongi_rating %></p>
-                <p>작성자: <%= review.writer %></p>
-                <p>작성일: <%= review.date %></p>
+            <h2>제목: <%= review.title %></h2>
+            <p>포장한 곳:<%= review.place_name %></p>
+            <p>내용: <%= review.content %></p>
+            <p>용기 종류: <%= review.yongi_type %></p>
+            <p>용기 용량: <%= review.yongi_volume %></p>
+            <p>용기 적합도: <%= review.yongi_rating %></p>
+            <p>작성자: <%= review.writer %></p>
+            <p>작성일: <%= review.date %></p>
             </content>
+
         </div>
-        
+
     </main>
 </body>
+
 </html>

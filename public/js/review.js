@@ -19,7 +19,7 @@ function placeList(data){
     for(let i = 0; i < data.length; i ++){
         let place = data[i];
         placelist.innerHTML += "<li><div class = 'placelist_result' id =" +  place.id + ">" + place.place_name +
-        "주소:" + place.address_name + "</div></li>";
+        "<p class='placelist_addr'>주소:" + place.address_name + "</p></div></li>";
     }
 
     // eventlistner 나중에 붙이기

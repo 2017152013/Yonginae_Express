@@ -1,6 +1,20 @@
-content         {grid-row: 3/4; grid-column: 2/3; display: inline-block;}
+content {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    display: inline-block;
+}
 
-img             { width: 45%; height: 45%; margin: 10px; }
+img {
+    width: 45%;
+    height: 45%;
+    margin: 10px;
+}
 
-p               { font-size: 20px}
-p.main          { font-size: 30px; font-weight: bold;}
+p {
+    font-size: 20px
+}
+
+p.main {
+    font-size: 30px;
+    font-weight: bold;
+}

@@ -74,6 +74,36 @@ router.get('/create', (req, res) => {
     return;
 })
 
+router.get('/edit/:id', (req, res) => {
+    if (!req.session.is_logined){
+        res.redirect('/account/login');
+        return;
+    }
+
+    const id = req.params.id;
+    Review.findOne({_id:id}, (err, data) => {
+        if(err){
+            console.log(err);
+        }else{
+            if (data == null){
+                console.log("데이터가 없습니다");
+            }
+            else{
+                review = data;
+                res.render('review/edit',{
+                    title: "review:edit",
+                    css:"/css/main.css",
+                    is_logined:req.session.is_logined,
+                    user:req.session.user,
+                    review:review
+                });
+            }
+        }
+        return;
+    })
+})
+
+
 router.post('/create', uploader.single('file'), (req, res) => {
     let file = req.file;
   
@@ -143,14 +173,14 @@ router.post('/create', uploader.single('file'), (req, res) => {
     newReview.yongi_rating = yongi_rating;
     newReview.writer = writer;
 
-    let result = {};
-
     newReview.save((err, data) => {
         if(err){
             console.log(err);
         }
         else{
-            res.redirect('/review');
+            req.session.save(() => {
+                res.redirect('/review');
+            })
         }
     });
 })

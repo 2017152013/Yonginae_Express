@@ -1,12 +1,41 @@
-h1              { font-family: 'Do Hyeon', sans-serif;
-    font-size: 60px; text-align: center; font-weight: bold; margin-bottom: 0;}
+h1 {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 60px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+html, body{
+    margin: 0;
+}
+
+body {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#login-box{
+    text-align: center;
+}
+
+p input {
+    width: 150px;
+    height: 30px
+}
 
 
-body            { font-family: 'Do Hyeon', sans-serif; font-size: 30px;
-                 display: flex; justify-content: center; align-items: center; flex-direction: column;}
+button {
+    font-family: 'Do Hyeon';
+    font-size: 20px;
+}
 
-p input         { width: 150px; height: 30px}
-
-
-button      {font-family: 'Do Hyeon'; font-size: 20px;}
-a           { margin-left: 10px;}
+a {
+    margin-left: 10px;
+}
