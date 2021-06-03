@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.set('useFindAndModify', false);
 
 // mongoose setting
 mongoose.connect('mongodb://localhost:27017/yonginaeDB', {useNewUrlParser:true});

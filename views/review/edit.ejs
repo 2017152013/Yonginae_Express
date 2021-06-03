@@ -18,9 +18,10 @@
         </aside>
         <main>
             <h1>리뷰작성</h1>
-            <form action="/review/create" method="POST" enctype="multipart/form-data">
+            <form action="/review/edit/<%= review._id %>" method="POST" enctype="multipart/form-data">
                 <p><input type="hidden" name="place_name" id="place_name" value="<%= review.place_name %>"></p>
                 <p><input type="hidden" name="place_id" id="place_id" value="<%= review.place_id %>"></p>
+                <p><input type="hidden" name="original_file" id="original_file" value="<%= review.filename %>"></p>
                 <p>리뷰 제목: <input type="text" name="title" id="title" size = "50" value="<%= review.title %>"></p>
                 <p>사진: <input type="file" name="file" id="file"></p>
                 
