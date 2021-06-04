@@ -110,6 +110,22 @@ function displayPlaces(places) {
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
     map.setBounds(bounds);
+
+    /* dongyun-defined */
+    // 검색 결과에 이벤트 리스너 등록: 클릭 시 reveiw/id로 연결
+    const infos = document.getElementsByClassName("info");
+    for(let i = 0; i < infos.length; i ++){
+        const info_id = infos[i].id;
+        const info_child = infos[i].childNodes;
+        const place_name = info_child[1].innerHTML;
+
+        for(let j = 0; j < info_child.length; j ++){
+            info_child[j].addEventListener("click", function(){
+                window.location.href = "/place/place_review/" + info_id + "/" + place_name;
+            });
+        }
+        
+    }
 }
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
@@ -117,7 +133,7 @@ function getListItem(index, places) {
 
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info">' +
+                '<div class="info" id="' + places.id + '">' + 
                 '   <h5>' + places.place_name + '</h5>';
 
     if (places.road_address_name) {
@@ -304,4 +320,9 @@ function markup(){
             image : markerImage // 마커 이미지 
         });
     }
+}
+
+const infos = document.getElementsByClassName("info");
+for(let i = 0; i < infos.length; i ++){
+    console.log(infos[i].innerHTML);
 }

@@ -32,36 +32,149 @@
                 <p>리뷰 내용<br><textarea name="content" id="content" cols="100" rows="30"><%= review.content %></textarea></p>
                 <p>용기 종류
                     <select name="yongi_type" id="yongi_type">
-                        <option value="square">사각 용기</option>
-                        <option value="cylinder">원형 용기</option>
-                        <option value="fryingpan">프라이팬</option>
-                        <option value="pot">냄비</option>
-                        <option value="tumbler">텀블러</option>
-                        <option value="etc">기타</option>
+                        <%if (review.yongi_type == "사각 용기"){%>
+                            <option value="square" selected>사각 용기</option>
+                        <%} else{%>
+                            <option value="square">사각 용기</option>
+                        <%}%>
+
+                        <%if (review.yongi_type == "원형 용기"){%>
+                            <option value="cylinder" selected>원형 용기</option>
+                        <%} else{%>
+                            <option value="cylinder">원형 용기</option>
+                        <%}%>
+
+                        <%if (review.yongi_type == "프라이팬"){%>
+                            <option value="fryingpan" selected>프라이팬</option>
+                        <%} else{%>
+                            <option value="fryingpan">프라이팬</option>
+                        <%}%>
+                        
+                        <%if (review.yongi_type == "냄비"){%>
+                            <option value="pot" selected>냄비</option>
+                        <%} else{%>
+                            <option value="pot">냄비</option>
+                        <%}%>
+
+                        <%if (review.yongi_type == "텀블러"){%>
+                            <option value="tumbler" selected>텀블러</option>
+                        <%} else{%>
+                            <option value="tumbler">텀블러</option>
+                        <%}%>
+                        
+                        <%if (review.yongi_type == "기타"){%>
+                            <option value="etc" selected>기타</option>
+                        <%} else{%>
+                            <option value="etc">기타</option>
+                        <%}%>
+                        
                     </select>
                 </p>
                 <p>용기 용량
                     <select name="yongi_volume" id="yongi_volume">
-                        <option value="500">500ml 이하</option>
-                        <option value="1000">1l 이하</option>
-                        <option value="1500">1.5l 이하</option>
-                        <option value="2000">2l 이하</option>
-                        <option value="2500">2.5l 이하</option>
-                        <option value="3000">3l 이하</option>
-                        <option value="3500">3.5l 이하</option>
-                        <option value="4000">4l 이하</option>
-                        <option value="4500">4.5l 이하</option>
-                        <option value="5000">5l 이하</option>
-                        <option value="max">5l 초과</option>
+                        <%if (review.yongi_volume == "500ml 이하"){%>
+                            <option value="500" selected>500ml 이하</option>
+                        <%} else{%>
+                            <option value="500">500ml 이하</option>
+                        <%}%>
+
+                        <%if (review.yongi_volume == "1l 이하"){%>
+                            <option value="1000" selected>1l 이하</option>
+                        <%} else{%>
+                            <option value="1000">1l 이하</option>
+                        <%}%>
+
+                        <%if (review.yongi_volume == "1.5l 이하"){%>
+                            <option value="1500" selected>1.5l 이하</option>
+                        <%} else{%>
+                            <option value="1500">1.5l 이하</option>
+                        <%}%>
+                        
+                        <%if (review.yongi_volume == "2l 이하"){%>
+                            <option value="2000" selected>2l 이하</option>
+                        <%} else{%>
+                            <option value="2000">2l 이하</option>
+                        <%}%>
+
+                        <%if (review.yongi_volume == "2.5l 이하"){%>
+                            <option value="2500" selected>2.5l 이하</option>
+                        <%} else{%>
+                            <option value="2500">2.5l 이하</option>
+                        <%}%>
+                        
+                        <%if (review.yongi_volume == "3l 이하"){%>
+                            <option value="3000" selected>3l 이하</option>
+                        <%} else{%>
+                            <option value="3000">3l 이하</option>
+                        <%}%>
+                        
+                        <%if (review.yongi_volume == "3.5l 이하"){%>
+                            <option value="3500" selected>3.5l 이하</option>
+                        <%} else{%>
+                            <option value="3500">3.5l 이하</option>
+                        <%}%>
+                        
+                        <%if (review.yongi_volume == "4l 이하"){%>
+                            <option value="4000" selected>4l 이하</option>
+                        <%} else{%>
+                            <option value="4000">4l 이하</option>
+                        <%}%>
+
+                        <%if (review.yongi_volume == "4.5l 이하"){%>
+                            <option value="4500" selected>4.5l 이하</option>
+                        <%} else{%>
+                            <option value="4500">4.5l 이하</option>
+                        <%}%>
+
+                        <%if (review.yongi_volume == "5l 이하"){%>
+                            <option value="5000" selected>5l 이하</option>
+                        <%} else{%>
+                            <option value="5000">5l 이하</option>
+                        <%}%>
+
+                        <%if (review.yongi_volume == "5l 초과"){%>
+                            <option value="max" selected>5l 초과</option>
+                        <%} else{%>
+                            <option value="max">5l 초과</option>
+                        <%}%>
+
                     </select>
                 </p>
                 <p>
                     용기 점수
-                    <input type="radio" name="yongi_rating" id="yongi_rating_1" value="1">1
-                    <input type="radio" name="yongi_rating" id="yongi_rating_2" value="2">2
-                    <input type="radio" name="yongi_rating" id="yongi_rating_3" value="3">3
-                    <input type="radio" name="yongi_rating" id="yongi_rating_4" value="4">4
-                    <input type="radio" name="yongi_rating" id="yongi_rating_5" value="5">5
+                    <% if (review.yongi_rating == 1) {%>
+                        <input type="radio" name="yongi_rating" id="yongi_rating_1" value="1" checked>1
+                        <input type="radio" name="yongi_rating" id="yongi_rating_2" value="2">2
+                        <input type="radio" name="yongi_rating" id="yongi_rating_3" value="3">3
+                        <input type="radio" name="yongi_rating" id="yongi_rating_4" value="4">4
+                        <input type="radio" name="yongi_rating" id="yongi_rating_5" value="5">5
+                    <% }else if (review.yongi_rating == 2){%>
+                        <input type="radio" name="yongi_rating" id="yongi_rating_1" value="1">1
+                        <input type="radio" name="yongi_rating" id="yongi_rating_2" value="2" checked>2
+                        <input type="radio" name="yongi_rating" id="yongi_rating_3" value="3">3
+                        <input type="radio" name="yongi_rating" id="yongi_rating_4" value="4">4
+                        <input type="radio" name="yongi_rating" id="yongi_rating_5" value="5">5
+                    <% }else if (review.yongi_rating == 3){%>
+                        <input type="radio" name="yongi_rating" id="yongi_rating_1" value="1">1
+                        <input type="radio" name="yongi_rating" id="yongi_rating_2" value="2">2
+                        <input type="radio" name="yongi_rating" id="yongi_rating_3" value="3" checked>3
+                        <input type="radio" name="yongi_rating" id="yongi_rating_4" value="4">4
+                        <input type="radio" name="yongi_rating" id="yongi_rating_5" value="5">5
+                    <% }else if (review.yongi_rating == 4){%>
+                        <input type="radio" name="yongi_rating" id="yongi_rating_1" value="1">1
+                        <input type="radio" name="yongi_rating" id="yongi_rating_2" value="2">2
+                        <input type="radio" name="yongi_rating" id="yongi_rating_3" value="3">3
+                        <input type="radio" name="yongi_rating" id="yongi_rating_4" value="4" checked>4
+                        <input type="radio" name="yongi_rating" id="yongi_rating_5" value="5">5
+                    <% }else{%>
+                        <input type="radio" name="yongi_rating" id="yongi_rating_1" value="1">1
+                        <input type="radio" name="yongi_rating" id="yongi_rating_2" value="2">2
+                        <input type="radio" name="yongi_rating" id="yongi_rating_3" value="3">3
+                        <input type="radio" name="yongi_rating" id="yongi_rating_4" value="4">4
+                        <input type="radio" name="yongi_rating" id="yongi_rating_5" value="5" checked>5
+                    <% } %>
+                        
+                    
                 </p>
                 <input type="submit" value="리뷰등록">
             </form>

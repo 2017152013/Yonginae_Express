@@ -133,7 +133,7 @@ router.post('/edit/:id', uploader.single('file'), (req, res) => {
     // 값 변경
     if (yongi_type == "square") {
         yongi_type = "사각 용기";
-    } else if (yongi_type == "cyliner") {
+    } else if (yongi_type == "cylinder") {
         yongi_type = "원형 용기";
     } else if (yongi_type == "fryingpan") {
         yongi_type = "프라이팬";
@@ -170,9 +170,8 @@ router.post('/edit/:id', uploader.single('file'), (req, res) => {
         yongi_volume = "5l 초과";
     }
 
-    Review.findOneAndUpdate({
-            _id: id
-        }, {
+    Review.findOneAndUpdate({_id: id}, 
+        {
             $set: {
                 title: title,
                 content: content,
@@ -220,7 +219,7 @@ router.post('/create', uploader.single('file'), (req, res) => {
     // 값 변경
     if (yongi_type == "square") {
         yongi_type = "사각 용기";
-    } else if (yongi_type == "cyliner") {
+    } else if (yongi_type == "cylinder") {
         yongi_type = "원형 용기";
     } else if (yongi_type == "fryingpan") {
         yongi_type = "프라이팬";
