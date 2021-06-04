@@ -39,8 +39,29 @@
                 <p>작성자: <%= review.writer %></p>
                 <p>작성일: <%= review.date %></p>
             </content>
-
         </div>
+        
+        <div>
+            댓글창
+            <% if (is_logined){%>
+            <form action="/review/comment/<%= review.id %>" method="POST">
+                <input type="text" name="content" style="width: 500px; height: 20px;">
+                <input type="submit" value="작성">
+            </form>
+            <% } %>
+            <div>
+                <% comments.forEach(function(comment){%>
+                    <div>
+                        <span><%= comment.writer %></span>
+                        <br>
+                        <%=comment.content%>
+                        <br>
+                        <%= comment.date %>
+                    </div>
+                <%})%>
+            </div>
+        </div>
+
 
     </main>
 </body>

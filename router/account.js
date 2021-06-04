@@ -13,7 +13,6 @@ router.get('/login', (req, res) => {
 
 router.post('/login', (req, res) => {
     let result = {}
-    console.log("로그인정보" + req.body.id);
     const id = req.body.id;
     const password = req.body.password;
     User.findOne({id:id, password:password}, function(err, data){

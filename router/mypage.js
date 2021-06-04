@@ -10,13 +10,22 @@ router.get('/', function(req, res){
         return;
     }
 
-    res.render('mypage/mypage', {
-        title: "mypage",
-        css:"/css/main.css",
-        is_logined:req.session.is_logined,
-        user:req.session.user
+    Review.count({writer:req.session.user}, (err, reviewCount) => {
+        if(err){
+            console.log(err);
+        }else{
+            res.render('mypage/mypage', {
+                title: "mypage",
+                css:"/css/main.css",
+                is_logined:req.session.is_logined,
+                user:req.session.user,
+                reviewCount:reviewCount
+            });
+            return;
+        }
     });
-    return;
+
+    
 });
 
 router.get('/myreview', function(req, res){

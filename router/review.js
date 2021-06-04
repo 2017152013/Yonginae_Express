@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Review = require('../models/Review');
+const Comment = require('../models/Comment');
 const multer = require('multer');
 
 // 업로드 파일 위치 지정
@@ -40,6 +41,7 @@ router.get('/', function (req, res) {
 router.get('/detail/:id', (req, res) => {
     const id = req.params.id;
     let review;
+    let comments;
     Review.findOne({
         _id: id
     }, (err, data) => {
@@ -50,16 +52,27 @@ router.get('/detail/:id', (req, res) => {
                 console.log("데이터가 없습니다");
             } else {
                 review = data;
+            }
+        }
+        return;
+    }).then(()=> {
+        Comment.find({review_id:id}, (err, coms) => {
+            if (err){
+                console.log(err);
+            }
+            else{
+                comments = coms;
+                
                 res.render('review/detail', {
                     title: "detail",
                     css: "/css/main.css",
                     is_logined: req.session.is_logined,
                     user: req.session.user,
-                    review: review
+                    review: review,
+                    comments:comments
                 });
             }
-        }
-        return;
+        });
     })
 });
 
@@ -292,5 +305,26 @@ router.get('/delete/:id', (req, res) => {
         }
     });
 });
+
+router.post('/comment/:id', (req,res) => {
+    const id = req.params.id;
+    const content = req.body.content;
+
+    let newComment = new Comment();
+    newComment.review_id = id;
+    newComment.content = content;
+    newComment.writer = req.session.user;
+
+    newComment.save((err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            req.session.save(() => {
+                res.redirect('/review/detail/' + id);
+            })
+        }
+    });
+
+})
 
 module.exports = router;
