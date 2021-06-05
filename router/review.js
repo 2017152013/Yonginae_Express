@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Review = require('../models/Review');
 const Comment = require('../models/Comment');
+const Challenge = require('../models/Challenge');
 const multer = require('multer');
 
 // 업로드 파일 위치 지정
@@ -293,17 +294,28 @@ router.post('/create', uploader.single('file'), (req, res) => {
 
 router.get('/delete/:id', (req, res) => {
     const id = req.params.id;
-    Review.deleteOne({
-        _id: id
-    }, function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            req.session.save(() => {
-                res.redirect('/review');
-            })
+
+    Challenge.findOneAndUpdate({isDeleted:false, review:id},
+        {$set:{isDeleted:true}},
+        function(err, data){
+            if(err){console.log(err);}
+
+            Review.deleteOne({
+                _id: id
+            }, function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    req.session.save(() => {
+                        res.redirect('/review');
+                    })
+                }
+            });
+
         }
-    });
+    )
+
+    
 });
 
 router.post('/comment/:id', (req,res) => {

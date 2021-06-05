@@ -22,6 +22,10 @@ const ChallengeSchema = new mongoose.Schema({
     claps:{
         type:Number,
         default:0
+    },
+    isDeleted:{
+        type:Boolean,
+        default:false
     }
     
 })

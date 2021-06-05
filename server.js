@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var fs = require('fs');
 
+
+
 // 서버가 읽을 수 있도록 위치 지정
 app.set('views', [path.join(__dirname + '/views'),
 path.join(__dirname, 'views/challenge/'),

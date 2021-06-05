@@ -82,3 +82,6 @@ function registerChallenge(id){
     window.location.href = "/challenge";
   })
 }
+
+// 박수치기
+document.getElementById("clap");

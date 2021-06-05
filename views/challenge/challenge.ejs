@@ -17,6 +17,7 @@
             <p>👏:<%= chall.claps %></p>
             <img src="/uploads/<%= chall.review.filename %>" alt="" width="200" height="200">
             <a href="/review/detail/<%= chall.review._id %>"><button>리뷰 보러가기</button></a>
+            <a href="/challenge/clap/<%= chall._id%>"><button>👏박수👏</button></a>
         </div>
     <% } %>
 </body>

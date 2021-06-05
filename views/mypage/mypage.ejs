@@ -3,6 +3,13 @@
 <head>
     <%- include('header') %>
     <link rel="stylesheet" href="/css/mainpage.css">
+    <style>
+        table, tr, th, td{
+            border: 1px solid gray;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
 
 </head>
 
@@ -13,16 +20,28 @@
             <em><%= user %></em> 님
         </ul>
         <ul>
-            등급: 골드
+            <li>나의 레벨:
+            <% if(parseInt(reviewCount + challCount) == 0) {%>
+                1
+            <%} else if (parseInt(reviewCount + challCount) <= 2){%>
+                2
+            <%} else if (parseInt(reviewCount + challCount) <= 5){%>
+                3
+            <%} else if (parseInt(reviewCount + challCount) <= 8){%>
+                4
+            <%} else{%>
+                5
+            <%}%>
+            </li>
             <ul>
                 <li>작성한 리뷰 <%= reviewCount %>건</li>
-                <li>참여한 챌린지 n건</li>
+                <li>참여한 챌린지 <%= challCount %>건</li>
             </ul>
         </ul>
         <a href="/mypage/myreview">
             <button class="review">작성 리뷰 확인</button>
         </a>
-        <a>
+        <a href="/mypage/mychallenge">
             <button class="review">챌린지 기록 확인</button>
         </a>
     </main>

@@ -7,11 +7,10 @@ router.get('/', function(req, res){
 
     let challenges = {};
     
-    Challenge.find()
+    Challenge.find({isDeleted:false})
         .populate("review")
         .exec((err, challs) => {
             if(err) return res.status(400).send(err);
-            console.log(challs);
             res.render('challenge/challenge', {
                 title: "challenge",
                 css: "/css/main.css",
@@ -93,6 +92,26 @@ router.post('/register_challenge', (req, res) => {
         result.message = "챌린지에 참여하셨습니다!";
         res.json(result);
     })
-})
+});
+
+router.get('/clap/:id', (req, res) => {
+    const id = req.params.id;
+    Challenge.findOneAndUpdate(
+        {_id: id}, 
+        { $inc : {'claps' : 1}},
+        function (err, doc) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("doc");
+                console.log(doc);
+                req.session.save(() => {
+                    res.redirect('/challenge');
+                })
+                return;
+            }
+        }
+    );
+});
 
 module.exports = router;
