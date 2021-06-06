@@ -11,14 +11,19 @@
     <%- include('nav') %>
     <main>
         <h1>챌린지</h1>
-        <p>6월의 챌린지: 카카오톡으로 리뷰 공유하기</p>
-        <a href="/challenge/review_select">챌린지 참여</a>
-        <div class = "flexBox">
+        <p id="challenge-header">✨6월의 챌린지: 카카오톡으로 리뷰 공유하기✨</p>
+        <div class="reviewBtn">
+            <a href="/challenge/review_select">챌린지 참여</a>
+        </div>
+        
+        <div class = "reviewContent">
             <% for (chall of challs) {%>
-                <div class = "chall">
-                    <p><%= chall.review.writer %>님이 용기내 리뷰를 공유하셨습니다.</p>
+                <div class = "review-container">
+                    <p class="chall-message"><%= chall.review.writer %>님이 용기내 리뷰를 공유하셨습니다.</p>
                     <p>👏:<%= chall.claps %></p>
-                    <img src="/uploads/<%= chall.review.filename %>" alt="" width="200" height="200"><br>
+                    <div class="img-container">
+                        <img src="/uploads/<%= chall.review.filename %>" alt="">
+                    </div>
                     <a href="/review/detail/<%= chall.review._id %>"><button>리뷰 보러가기</button></a>
                     <a href="/challenge/clap/<%= chall._id%>"><button>👏박수👏</button></a>
                 </div>

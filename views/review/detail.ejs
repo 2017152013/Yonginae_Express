@@ -6,59 +6,57 @@
     <link rel="stylesheet" href="/css/detail.css">
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-    <script>
-        function share() {
-            var url = encodeURI(encodeURIComponent(myform.url.value));
-            var title = encodeURI(myform.title.value);
-            var shareURL = "https://share.naver.com/web/shareView?url=" + url + "&title=" + title;
-            document.location = shareURL;
-        }
-    </script>
 </head>
 
 <body>
     <%- include('nav') %>
     <main>
         <h1>리뷰 상세</h1>
+
         <% if (user == review.writer){%>
-        <a href="/review/edit/<%= review._id %>">수정하기</a>
-        <a href="/review/delete/<%= review._id %>">삭제하기</a>
+        <div class="reviewBtn"><a href="/review/edit/<%= review._id %>">수정하기</a></div>
+        <div class="reviewBtn"><a href="/review/delete/<%= review._id %>">삭제하기</a></div>
         <%}%>
         <div class = "rev">
             <div style="display: flex; flex-direction: column;">
-                <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review_img" width="400" height="400">
-                <a href="/uploads/<%= review.filename %>"><button>사진 확대</button></a>
-            </div>
-            <content>
-                <h2>제목: <%= review.title %></h2>
-                <p>포장한 곳:<%= review.place_name %></p>
-                <p>내용: <%= review.content %></p>
-                <p>용기 종류: <%= review.yongi_type %></p>
-                <p>용기 용량: <%= review.yongi_volume %></p>
-                <p>용기 적합도: <%= review.yongi_rating %></p>
-                <p>작성자: <%= review.writer %></p>
-                <p>작성일: <%= review.date %></p>
-            </content>
+                <div class="img-container">
+                <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review_img">
+        </div>
+        <a href="/uploads/<%= review.filename %>"><button>사진 확대 🔍</button></a>
+        </div>
+        <content>
+            <h2>제목: <%= review.title %></h2>
+            <p>포장한 곳:<%= review.place_name %></p>
+            <p>내용: <%= review.content %></p>
+            <hr>
+            <p>용기 종류: <%= review.yongi_type %></p>
+            <p>용기 용량: <%= review.yongi_volume %></p>
+            <p>용기 적합도: <%= review.yongi_rating %></p>
+            <hr>
+            <p>작성자: <%= review.writer %></p>
+            <p>작성일: <span class="date"><%= review.date %></span></p>
+        </content>
         </div>
         <hr>
-        
-        <div class = "comment">
-            댓글창
+
+        <div class="comment">
+            <p id="comment-header">댓글창</p>
             <% if (is_logined){%>
             <form action="/review/comment/<%= review.id %>" method="POST">
-                <input type="text" name="content" style="width: 500px; height: 20px;">
-                <input type="submit" value="작성">
+                <input type="text" name="content" id="input-content">
+                <input type="submit" value="작성" id="input-btn">
             </form>
-            <% } %>
+            <% } else{%>
+            <input type="text" name="content" id="input-content" placeholder="리뷰 작성을 위해서는 로그인이 필요합니다!">
+            <input type="submit" value="작성" id="input-btn">
+            <%}%>
             <div>
                 <% comments.forEach(function(comment){%>
-                    <div>
-                        <span><%= comment.writer %></span>
-                        <br>
-                        <%=comment.content%>
-                        <br>
-                        <%= comment.date %>
-                    </div>
+                <div class="comment-box">
+                    <p class="comment-writer">작성자: <%= comment.writer %></p>
+                    <p class="comment-content"><%=comment.content%></p>
+                    <p class="comment-date"><%= comment.date %></p>
+                </div>
                 <%})%>
             </div>
         </div>

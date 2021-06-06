@@ -5,8 +5,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var fs = require('fs');
+var favicon = require('serve-favicon');
 
-
+// favicon
+app.use(favicon(path.join(__dirname, 'public',  'favicon.ico')));
 
 // 서버가 읽을 수 있도록 위치 지정
 app.set('views', [path.join(__dirname + '/views'),
@@ -32,6 +34,11 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
+
+
+
+출처: https://askforyou.tistory.com/37 [일상과 개발]
 
 // 라우터 모듈인 main.js를 불러와서 app에 전달
 // router에서 fs 모듈을 사용할 수 있도록 인자에 추가

@@ -1,8 +1,8 @@
 <header>
-    <h1><a href = "/">용기내</a></h1>
+    <h1><a href = "/">🥗용기내🥗</a></h1>
     <% if (is_logined) {%>
         <h3>
-            <%= user %>님!
+            <%= user %>님 안녕하세요🙂
             <a href="/account/logout">로그아웃</a>
         </h3>
     <%} else{%>
@@ -11,22 +11,56 @@
 </header>
 <nav>
     <div>
+        <% if (title == 'place'){%>
+        <div class="selected">
+            <a href = "/place">주변식당 찾기</a>
+        </div>
+        <% }else{ %>
         <div>
             <a href = "/place">주변식당 찾기</a>
         </div>
+        <% } %>
+
+        <% if (title == 'review'){%>
+        <div class="selected">
+            <a href = "/review">리뷰 모아보기</a>
+        </div>
+        <% }else{ %>
         <div>
             <a href = "/review">리뷰 모아보기</a>
         </div>
+        <% } %>
+
+        <% if (title == 'challenge'){%>
+        <div class="selected">
+            <a href = "/challenge">챌린지기록 게시판</a>
+        </div>
+        <% }else{ %>
         <div>
             <a href = "/challenge">챌린지기록 게시판</a>
         </div>
+        <% } %>
+
+        <% if (title == 'envinfo'){%>
+        <div class="selected">
+            <a href = "/envinfo">환경정보 모아보기</a>
+        </div>
+        <% }else{ %>
         <div>
             <a href = "/envinfo">환경정보 모아보기</a>
         </div>
+        <% } %>
+
         <% if (is_logined) {%>
+            <% if (title == 'mypage'){%>
+            <div class="selected">
+                <a  href = "/mypage">마이페이지</a>
+            </div>
+            <% }else{ %>
             <div>
                 <a  href = "/mypage">마이페이지</a>
-            </div>        
+            </div>
+            <% } %>    
         <%} else{%>
             <div>
                 <a  href = "/account/login">로그인</a>

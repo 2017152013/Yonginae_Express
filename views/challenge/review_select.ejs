@@ -14,9 +14,10 @@
     <div class = "rev">
       <% reviews.forEach(function(review){%>
         <div class = "content">
-          <h3>제목: <%= review.title %></h3>
+          <p>제목: <%= review.title %><p>
           <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review_img" width="400" height="400"><br><br>
           <a href="/review/detail/<%= review.id %>">상세보기</a>
+          <br>
           <a class="kakao-link-btn" id="<%= review._id %>">
             <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
           </a>

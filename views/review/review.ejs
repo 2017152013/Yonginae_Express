@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('header') %>
     <link rel="stylesheet" href="/css/review.css">
-    <link href = "https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
-    <link href = "https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
     <%- include('nav') %>
     <main>
         <h1>리뷰</h1>
-        <div class = "reviewBtn">
+        <div class="reviewBtn">
             <% if (is_logined) { %>
-                <a href="/review/create">리뷰 작성</a>
+            <a href="/review/create">리뷰 작성 📝</a>
             <% } else {%>
-                <a href="/account/login">리뷰 작성</a>
+            <a href="/account/login">리뷰 작성 📝</a>
             <% } %>
         </div>
-        
-        <div class ="reviewContent">
+
+        <div class="reviewContent">
             <% reviews.forEach(function(review){%>
+            <div class="review-container">
                 <a href="/review/detail/<%= review.id %>">
                     <div>
-                        <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review image" width="400" height="400">
-                        <h3>제목: <%= review.title %></h3>
+                        <div class="img-container">
+                            <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review image">
+                        </div>
+                        <p class="review-title"><%= review.title %></p>
                         <p>작성자: <%= review.writer %></p>
                     </div>
                 </a>
+            </div>
             <%})%>
         </div>
     </main>
 </body>
+
 </html>

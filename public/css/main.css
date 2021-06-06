@@ -1,4 +1,7 @@
 /* form */
+html, body{
+        margin: 0%;
+}
 body {
         position: relative;
         margin-left: auto;
@@ -22,13 +25,18 @@ nav div {
         height: 60px;
         border: 1;
         padding: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 
 nav div div {
         height: 40px;
-        width: 300px;
+        width: 240px;
         margin: 10px;
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 
 
@@ -41,16 +49,33 @@ h1 {
         margin-bottom: 0;
 }
 
+h1 a:hover{
+        color: #727552;
+}
+
+h1 a{
+        text-decoration: none;
+        color: black;
+}
+
 h3 {
-        font-family: 'Do Hyeon', sans-serif;
-        font-size: 30px;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-size: 24px;
         text-align: center;
         margin-top: 0;
         margin-bottom: 0;
 }
 
+h3 a{
+        font-size: 14px;
+        text-decoration: none;
+        color: grey;
+        border: 1px solid grey;
+        padding: 5px;
+}
+
 nav {
-        font-family: 'Black Han Sans', sans-serif;
+        font-family: 'Do Hyeon', sans-serif;
 }
 
 nav div {
@@ -58,18 +83,24 @@ nav div {
 }
 
 nav div div {
-        font-size: 30px;
+        font-size: 24px;
+}
+
+nav div div a{
+        text-decoration: none;
+        color: black;
 }
 
 /* design */
 header {
         color: grey;
-}
-
-nav div {
-        background-color: grey;
+        
 }
 
 nav div div {
-        background-color: rgb(238, 165, 202);
+        background-color: #f4f6e1;
+}
+
+.selected{
+        background-color: #dae6b6;
 }
