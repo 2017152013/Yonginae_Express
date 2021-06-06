@@ -24,7 +24,7 @@
         <a href="/review/edit/<%= review._id %>">수정하기</a>
         <a href="/review/delete/<%= review._id %>">삭제하기</a>
         <%}%>
-        <div>
+        <div class = "rev">
             <div style="display: flex; flex-direction: column;">
                 <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review_img" width="400" height="400">
                 <a href="/uploads/<%= review.filename %>"><button>사진 확대</button></a>
@@ -40,8 +40,9 @@
                 <p>작성일: <%= review.date %></p>
             </content>
         </div>
+        <hr>
         
-        <div>
+        <div class = "comment">
             댓글창
             <% if (is_logined){%>
             <form action="/review/comment/<%= review.id %>" method="POST">

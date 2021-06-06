@@ -1,0 +1,12 @@
+main    { grid-row: 3/4; grid-column: 2/3;}
+
+main        {font-family: 'Do Hyeon', sans-serif;}
+
+div.rev     {display: flex; flex-flow: row; flex-wrap: wrap; align-items: center;}
+
+div.content {display: block; width: 300px; height: 400px; border-width: thin; border-style: solid; border-color: plum;
+    margin: 5px; align-items: center; text-align: center;}
+
+div.content img  {width: 250px; height: 250px;}
+
+a.kakao-link-btn img {width: 40px; height: 40px;}

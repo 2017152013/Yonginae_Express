@@ -1,0 +1,16 @@
+main    { grid-row: 3/4; grid-column: 2/3;}
+
+main        {font-family: 'Do Hyeon', sans-serif;}
+
+main>p       { font-size: 25px;}
+
+main > a       { display: block; border-width: medium; border-style: solid; background-color: palevioletred;
+    width: 100px; height:30px; text-align: center; border-color:palevioletred; margin: 5px;
+    color: white; font-size: 20px;}
+
+div.flexBox     { display: flex; flex-flow: row; flex-wrap: wrap; align-items: center; font-size: 20px;}
+
+div.chall       { display: block; border: solid thin plum; margin: 5px; align-items: center; text-align: center;}
+div.chall img           { height: 300px; width: 300px;}
+button          { background-color: plum; color: white; font-size: 20px;
+                    margin: 3px; font-weight: bold;}

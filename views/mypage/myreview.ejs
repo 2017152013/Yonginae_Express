@@ -2,7 +2,7 @@
 
 <head>
   <%- include('header') %>
-  <link rel="stylesheet" href="/css/mainpage.css">
+  <link rel="stylesheet" href="/css/mypage.css">
 
 </head>
 
@@ -14,16 +14,20 @@
     <% if (reviews.length == 0) {%>
       작성된 리뷰가 없습니다!
       <a href="/review/create">첫 리뷰 작성하기</a>
+
     <%} else{%>
-      <% reviews.forEach(function(review){%>
-        <a href="/review/detail/<%= review.id %>">
-          <div>
-            <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review_img" width="400" height="400">
-            <h3>제목: <%= review.title %></h3>
-            <p>작성자: <%= review.writer %></p>
-          </div>
-        </a>
+      <div class = "L1">
+        <% reviews.forEach(function(review){%>
+          <a  href="/review/detail/<%= review.id %>">
+            <div class = "L2">
+              <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review_img">
+              <h3>제목: <%= review.title %></h3>
+              <p>작성자: <%= review.writer %></p>
+            </div>
+          </a>
+        
         <%})%>
+      </div>
     <%}%>
 
     
