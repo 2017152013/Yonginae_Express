@@ -4,7 +4,10 @@
     <%- include('header') %>
     <link rel="stylesheet" href="/css/mypage.css">
     <style>
-        table, tr, th, td{
+        table,
+        tr,
+        th,
+        td {
             border: 1px solid gray;
             border-collapse: collapse;
             text-align: center;
@@ -16,34 +19,38 @@
 <body>
     <%- include('nav') %>
     <main>
-        <ul>
-            <em><%= user %></em> 님
-        </ul>
-        <ul>
-            <li>나의 레벨:
-            <% if(parseInt(reviewCount + challCount) == 0) {%>
+        <h1>마이페이지</h1>
+        <hr>
+        <div id="mypage-content">
+            <p><span><%= user %></span>님</p>
+            <p>
+                나의 레벨:
+                <% if(parseInt(reviewCount + challCount) == 0) {%>
                 1
-            <%} else if (parseInt(reviewCount + challCount) <= 2){%>
+                <%} else if (parseInt(reviewCount + challCount) <= 2){%>
                 2
-            <%} else if (parseInt(reviewCount + challCount) <= 5){%>
+                <%} else if (parseInt(reviewCount + challCount) <= 5){%>
                 3
-            <%} else if (parseInt(reviewCount + challCount) <= 8){%>
+                <%} else if (parseInt(reviewCount + challCount) <= 8){%>
                 4
-            <%} else{%>
+                <%} else{%>
                 5
-            <%}%>
-            </li>
-            <ul>
-                <li>작성한 리뷰 <%= reviewCount %>건</li>
-                <li>참여한 챌린지 <%= challCount %>건</li>
-            </ul>
-        </ul>
-        <a href="/mypage/myreview">
-            <button class="review">작성 리뷰 확인</button>
-        </a>
-        <a href="/mypage/mychallenge">
-            <button class="review">챌린지 기록 확인</button>
-        </a>
+                <%}%>
+            </p>
+           
+            <p>작성한 리뷰 <%= reviewCount %>건</p>
+            <p>참여한 챌린지 <%= challCount %>건</p>
+
+            <div id="btn-container">
+                <a href="/mypage/myreview">
+                    <button class="review">작성 리뷰 확인</button>
+                </a>
+
+                <a href="/mypage/mychallenge">
+                    <button class="review">챌린지 기록 확인</button>
+                </a>
+            </div>
+        </div>
     </main>
 </body>
 
