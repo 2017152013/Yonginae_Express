@@ -4,23 +4,29 @@
     <%- include('header') %>
     <link href = "https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
     <link href = "https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/mypage.css">
 
 </head>
 <body>
     <%- include('nav') %>
-    <h1><%=user%>님의 챌린지 기록 확인</h1>
-    <% if (challs.length == 0) {%>
-        챌린지 기록이 없습니다!
-        <a href="/challenge/review_select">첫 챌린지 참여하기</a>
-    <%} else{%>
-        <% for (chall of challs) {%>
-            <div>
-                <p>6월의 챌린지 기록</p>
-                <p>👏:<%= chall.claps %></p>
-                <img src="/uploads/<%= chall.review.filename %>" alt="" width="200" height="200">
-                <a href="/review/detail/<%= chall.review._id %>"><button>리뷰 보러가기</button></a>
+    <main>
+        <h1><%=user%>님의 챌린지 기록 확인</h1>
+        <% if (challs.length == 0) {%>
+            챌린지 기록이 없습니다!
+            <a href="/challenge/review_select">첫 챌린지 참여하기</a>
+        <%} else{%>
+            <div class = "L1">
+                <% for (chall of challs) {%>
+                    <div class = "L3">
+                        <p>6월의 챌린지 기록</p>
+                        <p>👏:<%= chall.claps %></p>
+                        <img src="/uploads/<%= chall.review.filename %>" alt="" width="200" height="200">
+                        <a href="/review/detail/<%= chall.review._id %>"><button>리뷰 보러가기</button></a>
+                    </div>
+                <% } %>
             </div>
-        <% } %>
-    <%}%>
+        <%}%>
+    </main>
+    
 </body>
 </html>

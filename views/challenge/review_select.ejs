@@ -2,7 +2,8 @@
 
 <head>
   <%- include('header') %>
-  <link rel="stylesheet" href="/css/mainpage.css">
+  
+  <link rel="stylesheet" href="/css/chall_select.css">
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 
@@ -10,22 +11,18 @@
   <%- include('nav') %>
   <main>
     <h1>공유하고 싶은 리뷰를 선택해 주세요!</h1>
-
-    <% reviews.forEach(function(review){%>
-
-    <div>
-      <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review_img" width="400" height="400">
-      <h3>제목: <%= review.title %></h3>
-      <a href="/review/detail/<%= review.id %>">상세보기</a>
-      <a class="kakao-link-btn" id="<%= review._id %>">
-        <img
-          src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
-        />
-      </a>
+    <div class = "rev">
+      <% reviews.forEach(function(review){%>
+        <div class = "content">
+          <h3>제목: <%= review.title %></h3>
+          <img src="http://localhost:3000/uploads/<%= review.filename %>" alt="review_img" width="400" height="400"><br><br>
+          <a href="/review/detail/<%= review.id %>">상세보기</a>
+          <a class="kakao-link-btn" id="<%= review._id %>">
+            <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+          </a>
+        </div>
+        <%})%>
     </div>
-
-    <%})%>
-
   </main>
   
   <script src="/js/challenge.js"></script>

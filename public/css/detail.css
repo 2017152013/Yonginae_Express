@@ -2,8 +2,11 @@ main        { grid-row: 3/4; grid-column: 2/3;}
 
 main  { font-family: 'Do Hyeon', sans-serif;;}
 
-main div    { display: flex; flex-flow: row; margin-top: 20px;}
+main div.rev    { display: flex; flex-flow: row; margin-top: 20px;}
 
 content   { display: block; margin-left: 50px;}
 content h2 {font-size: 25px;}
 content p  {font-size: 20px;}
+
+div.comment { font-size: 20px;}
+div.comment div div { display:block; border: solid thin black; margin: 3px;}
