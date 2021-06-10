@@ -1,12 +1,14 @@
 <header>
-    <h1><a href = "/">🥗용기내🥗</a></h1>
+    <h1 style="margin-top: 40.2px; font-size: 60px; text-align: center; font-weight: bold; margin-bottom: 0;">
+        <a href = "/">🥗용기내🥗</a>
+    </h1>
     <% if (is_logined) {%>
-        <h3>
+        <h3 style="font-family: 'Nanum Gothic', sans-serif; font-size: 24px; text-align: center; margin-top: 0; margin-bottom: 0;">
             <%= user %>님 안녕하세요🙂
             <a href="/account/logout">로그아웃</a>
         </h3>
     <%} else{%>
-        <h3>용기내 커뮤니티에 오신 것을 환영합니다! :)</h3>
+        <h3 style="font-family: 'Nanum Gothic', sans-serif; font-size: 24px; text-align: center; margin-top: 0; margin-bottom: 0;">용기내 커뮤니티에 오신 것을 환영합니다! :)</h3>
     <%}%>
 </header>
 <nav>
