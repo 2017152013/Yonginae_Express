@@ -35,11 +35,6 @@ app.use(session({
     saveUninitialized: true
 }));
 
-
-
-
-출처: https://askforyou.tistory.com/37 [일상과 개발]
-
 // 라우터 모듈인 main.js를 불러와서 app에 전달
 // router에서 fs 모듈을 사용할 수 있도록 인자에 추가
 var router = require('./router/main')(app, fs);

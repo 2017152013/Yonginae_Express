@@ -1,5 +1,27 @@
 // 마커를 담을 배열입니다
 var markers = [];
+/*  DONGYUN-DEFINED: 현재 위치의 위도와 경도 */
+let lat; let lon;
+// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+if (navigator.geolocation) {
+    
+    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+    navigator.geolocation.getCurrentPosition(function(position) {
+        
+        lat = position.coords.latitude; // 위도
+        lon = position.coords.longitude; // 경도
+        
+        console.log(lat, lon);
+            
+      });
+    
+} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+    
+    alert('현재 위치를 확인할 수 없습니다.')
+    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+        message = 'geolocation을 사용할수 없어요..'
+}
+/* END OF DONGYUN-DEFINED */
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -34,9 +56,18 @@ function searchPlaces() {
 function placesSearchCB(data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {
 
+        /* Dongyun-defined: 현재 위치 기준으로 거리순 정렬 */
+        // sort by compare Function
+        data.sort(function(a, b){
+            return simpleDistance(lat, lon, a.y, a.x) - simpleDistance(lat, lon, b.y, b.x)
+        })
+        // console.log(data);
+        /* Dongyun-defined END */
+        
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
         displayPlaces(data);
+
 
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
@@ -53,6 +84,13 @@ function placesSearchCB(data, status, pagination) {
 
     }
 }
+
+/* DONGYUN-DEFINED: 현재 위도 경도와 특정 좌표 사이의 직선 거리 */
+function simpleDistance(x1, y1, x2, y2){
+    return Math.sqrt(Math.pow((x1-x2), 2) + Math.pow((y1 - y2), 2));
+}
+
+/* END OF DONGYUN-DEFINED */
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {

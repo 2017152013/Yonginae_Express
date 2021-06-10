@@ -1,6 +1,7 @@
 <html>
   <head>
     <%- include('header') %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/mainpage.css">
 
   </head>
@@ -8,24 +9,29 @@
     <%- include('nav') %>
     <content>
       <p class= "main">용기내 챌린지란?</p>
-      <p>용기내 챌린지는 음식 포장으로 발생하는 불필요한 쓰레기를 줄이자는 취지에서 천 주머니, 에코백, 다회용기 등에 식재료나 
-          음식을 포장해 오는 운동이다. 식재료와 음식을 다르게 포장하는 것만으로도 포장 용도로 낭비되는 비닐, 플라스틱 등의 쓰레기를 크게 감축할 수 있다.
-      </p>
-      <p>#용기내 캠페인은 sns(인스타그램, 유튜브, 블로그 등)를 통해 크게 전파되고 있다. <br/>
-          2020년 6월, 롯데마트는 그린피스의 권고를 받아들여 2025년까지 일회용 플라스틱 사용량을 50% 감축하겠다고 선언했다. <br/>
-          2020년 6월, 스브스뉴스 공식 유튜브 채널 속 #용기내 캠페인 체험 영상이 업로드 되었고, 2021년 4월, 23만회 시청을 돌파했다. <br/>
-          2020년 7월, 롯데마트는 수도권 28개점 대상 '롯데마트 1일 1그린 용기내 캠페인'을 시행했다.  <br/>
-          롯데마트 내 반찬 코너로 반찬 용기를 가지고 오면 구입한 반찬 20%를 증량해주는 캠페인이다. <br/>
-          2020년 9월, 이마트는 환경부, 슈가버블과 협력해 이마트 성수점과 트레이더스 한성점에 세탁세제와 섬유유연제를 리필할 수 있는 
-          '에코 리필 스테이션'을 설치했다. <br/>
-          2021년 2월, 배우 류승룡과 박진희가 국제환경단체 그린피스의 ‘#용기내 캠페인’에 동참했다. <br/>
-           두 사람은 그린피스 서울 사무소 공식 유튜브 채널과 인스타그램 게시글을 통해 공개한 두 편의 영상으로 시민들이 용기를 재사용함으로써 플라스틱 사용을 줄일 수 있는 구체적인 실천 방안을 제안했다. <br/>
-          2021년 2월, 문재인 대통령과 김정숙 여사가 인천 남동구 소래포구 전통어시장에서 #용기내 캠페인에 동참하였다. <br/>
-          2021년 3월, 하나금융그룹은 2021년 4월 16일까지 하나 금융 임직원과 고객들이 일상 속에서 개인 텀블러 사용하는 인증샷을 
-          개인 sns에 업로드하면 추첨을 통해 친환경 제품을 증정하는 '하나 용기내 챌린지-善블러 캠페인'을 진행한다. <br/>
-          2021년 4월, 충북농협은 탄소중립 2050 정책과 4월 22일 지구의 날을 맞아 전 직원 대상 개인 용기 사용, 
-          개인컵, 장바구니 이용 등을 찍은 인증샷을 바탕으로 우수직원에게 시상하는 '범농협 #용기내 캠페인'을 전개한다. <br/></p>
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/greenpeace.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
   </content>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
   </body>
 </html>
