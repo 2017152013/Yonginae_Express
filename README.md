@@ -192,4 +192,39 @@ package.json 내의 dependencies
 * serve-favicon: 파비콘을 사용할 수 있게 해주는 모듈이다.
 (https://www.npmjs.com/package/serve-favicon)
 
+**********
 
+# Ⅵ. 구현 중 이슈
+
+## 1. 파일 업로드 이슈
+### 🤔 Problem
+- 리뷰 작성 시 사용자가 이미지 파일을 업로드하면 리뷰 조회 시 등록 이미지가 보여야 함
+- express는 media 파일 업로드를 지원하는 내부 기능 존재하지 않음
+
+### 💡 Solution
+- multer 모듈을 install, 파일이 저장될 위치를 uploads 폴더로 지정.
+- Review 데이터 스키마에 'filenamae'이라는 string 필드를 추가. 업르드된 파일명을 저장하는 방식을 채택.
+- 이미지를 불러올 때 uploads 폴더 내 'filename필드의 value'로 불러올 수 있었음
+
+## 2. 지도 검색 결과 가까운 거리 순 표시
+### 🤔 Problem
+- 프로젝트에 사용한 카카오 지도 API에는 현 위치에서 가까운 거리 순으로 검색 결과를 표시하는 기능이 존재하지 않음.
+
+### 💡 Solution
+- geolocation API를 통해 받아 온 모바일 기기의 현재 위도, 경도 값을 활용함.
+- 카카오 지도 API 장소 검색 결과가 return하는 데이터 내에는 특정 장소의 x, y좌표 값이 포함되어 있음.
+- geolocation에서 받은 위도, 경도 값과 카카오 API가 반환한 검색 결과 내의 좌표값의 직선 거리를 구하고, 직선 거리가 짧은 순서대로 정렬하여 user에게 반환.
+
+## 3. 특정 매장 별 리뷰 조회, 작성
+### 💡 Solution
+- 카카오 지도 API 장소 검색 결과가 return하는 데이터 내에는 특정 장소의 고유 id값이 포함되어 있음.
+- 장소의 고유 id를 그 장소 정보를 포함하는 tag 내 id로 활용하여 이를 클릭하면 ‘localhost:3000/place 3000/place/place_review/:id/:place_name name’ 경로로 이동할 수 있게 함.
+- POST 방식으로 위 경로에 접근하면 특정 매장 리뷰 작성, GET 방식으로 접근하면 특정 매장 리뷰 조회.
+
+## 4. 챌린지 - 리뷰 연동
+### 🤔 Problem
+- 챌린지 데이터는 리뷰 데이터를 참조해야 함.
+- 리뷰 데이터 삭제 시 챌린지 데이터가 남아 있는 경우 데이터가 망가짐.
+### 💡 Solution
+- 리뷰 데이터 삭제 시 그를 참조하는 챌린지 데이터의 isDeleted 필드를 true로 변경 (기본값 false).
+- 챌린지 데이터를 조회할 때 isDeleted 필드의 값이 false인 것만 조회하면 '리뷰 데이터를 삭제할 경우 그를 참조하는 챌린지 데이터도 삭제된다'라는 요구사항을 충족시킬 수 있음.
