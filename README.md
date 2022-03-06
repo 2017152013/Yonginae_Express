@@ -13,11 +13,16 @@
 
 # Ⅱ. 주요 기능
 1. 근처 다회용기 포장 가능 식당 찾기
-![]()
+![kakaomapapi](https://user-images.githubusercontent.com/80439545/156924983-12a511b5-5488-4ae4-890b-c871592d4928.JPG)
+
+
 2. 리뷰 올리기
-![]()
+![리뷰](https://user-images.githubusercontent.com/80439545/156925004-cd47acc5-055a-40a0-900f-ff31f5f091da.JPG)
+
+
 3. 챌린지 공유하기
-![]()
+![zfzfzfzf](https://user-images.githubusercontent.com/80439545/156925028-e7265cb7-170c-48a9-9c19-238512fb1ab4.JPG)
+
 
 **********
 
